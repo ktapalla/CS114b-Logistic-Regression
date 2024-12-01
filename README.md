@@ -31,7 +31,7 @@ In addition, this function should set the number of features in ``` self.n_featu
 
 It may be helpful to store the classes in terms of their indices, rather than their names. ``` self.class_dict ``` can be used to translate between them. To get the feature vector for a document, the ``` featurize ``` function described below can be used. 
 
-* ``` featurize(self, document) ``` - Given a document (as a list of words), returns a feature vector. Note that letting $|F|$ be the number of features, this function returns a vector of length $|F| + 1$. Furthermore, the last element of the vector should always be !. If we consider our parameter vector ``` self.theta ``` to have form $[w_{1} \cdots w_{n} b]$, and our feature vector to have form $[x_{1} \cdots x-{n} 1]$, then we can see that: 
+* ``` featurize(self, document) ``` - Given a document (as a list of words), returns a feature vector. Note that letting $|F|$ be the number of features, this function returns a vector of length $|F| + 1$. Furthermore, the last element of the vector should always be 1. If we consider our parameter vector ``` self.theta ``` to have form $[w_{1} \cdots w_{n}  b]$, and our feature vector to have form $[x_{1} \cdots x_{n}  1]$, then we can see that: 
 
 ```math
 [x_{1} ... x_{n} 1] \cdot 
@@ -42,7 +42,7 @@ w_{1} \newline
 b \newline
 \end{bmatrix} 
 = 
-\sum\limits_{j=1}^{n} x_[j} w_{j} + 1 \times b =  x \cdot w + b 
+\sum\limits_{j=1}^{n} x_{j} w_{j} + 1 \times b =  x \cdot w + b 
 ``` 
 
 In this way, the last element of the vector, corresponding to the bias, is a "dummy feature" with value 1. 
@@ -55,18 +55,20 @@ What features should you use? You can start with word count features, as in the 
 1. Create and fill in a matrix **x** and a vector **y**. Letting *m* be the number of documents in the mini-batch, **x** should have shape ($m$, $|F| + 1$) and **y** should have shape ($m-{1}$). Inuitively, **x** consists of the feature vectors for each document in the mini-batch, stacked on top of each other, and **y** contains the classes for those documents, in the same order. In other words, **x** and **y** should have the following forms: 
 
 ```math
-**x** = 
+x = 
 \begin{bmatrix}
-x_{1}^{(1)} \cdots x_{n}^{(1)} 1 \newline
+x_{1}^{(1)} \cdots x_{n}^{(1)}  1 \newline
 \vdots \ddots \vdots \vdots \newline 
-x_{1}^{(m)} \cdots x_{n}^{(m)} 1 \newline
+x_{1}^{(m)} \cdots x_{n}^{(m)}  1 \newline
 \end{bmatrix} 
 y = 
 \begin{bmatrix}
-y^{(1)} \vdots y^{(1)} \newline 
+y^{(1)} \newline 
+\vdots \newline 
+y^{(1)} \newline 
 \end{bmatrix} 
 ``` 
-2. Compute $\hat{y} = \sigma(**x** \cdot \theta)$. Note the order of the operands $**x** \cdot \theta$ (rather than $\theta \cdot x$). 
+2. Compute $\hat{y} = \sigma(x \cdot \theta)$. Note the order of the operands $x \cdot \theta$ (rather than $\theta \cdot x$). 
 
 3. Update the cross-entropy loss. Recall that the loss (for a single example) is $L_{CE}(\hat{y}, y) = -[y log \hat{y} + (1- y) log(1-\hat{y})]$. We want to calculate the average train loss over the whole training set, but since we're dividing by the number of training documents at the end, it's okay to just keep a running sum. 
 
