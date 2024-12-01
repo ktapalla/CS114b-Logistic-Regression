@@ -34,9 +34,9 @@ w_{1} & \cdots & w_{n} & b
 ```
 and our feature vector to have form 
 ```math 
-\begin{matrix} 
+\begin{bmatrix} 
 x_{1} & \cdots & x_{n} & 1 
-\end{matrix}
+\end{bmatrix}
 ``` 
 then we can see that: 
 ```math
