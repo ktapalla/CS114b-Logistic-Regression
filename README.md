@@ -31,7 +31,7 @@ In addition, this function should set the number of features in ``` self.n_featu
 
 It may be helpful to store the classes in terms of their indices, rather than their names. ``` self.class_dict ``` can be used to translate between them. To get the feature vector for a document, the ``` featurize ``` function described below can be used. 
 
-* ``` featurize(self, document) ``` - Given a document (as a list of words), returns a feature vector. Note that letting $|F|$ be the number of features, this function returns a vector of length $|F| + 1$. Furthermore, the last element of the vector should always be 1. If we consider our parameter vector ``` self.theta ``` to have form $$\begin{matrix} w_{1} & \cdots & w_{n} & b \end{matrix}$$, and our feature vector to have form $$\begin{matrix} x_{1} & \cdots & x_{n} * 1 \end{matrix}$$, then we can see that: 
+* ``` featurize(self, document) ``` - Given a document (as a list of words), returns a feature vector. Note that letting $|F|$ be the number of features, this function returns a vector of length $|F| + 1$. Furthermore, the last element of the vector should always be 1. If we consider our parameter vector ``` self.theta ``` to have form $\begin{bmatrix} w_{1} & \cdots & w_{n} & b \end{bmatrix}$, and our feature vector to have form $\begin{bmatrix} x_{1} & \cdots & x_{n} * 1 \end{bmatrix}$, then we can see that: 
 
 ```math
 \begin{bmatrix}
