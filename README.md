@@ -34,7 +34,7 @@ It may be helpful to store the classes in terms of their indices, rather than th
 * ``` featurize(self, document) ``` - Given a document (as a list of words), returns a feature vector. Note that letting $|F|$ be the number of features, this function returns a vector of length $|F| + 1$. Furthermore, the last element of the vector should always be 1. If we consider our parameter vector ``` self.theta ``` to have form $[w_{1} \cdots w_{n}  b]$, and our feature vector to have form $[x_{1} \cdots x_{n}  1]$, then we can see that: 
 
 ```math
-[x_{1} ... x_{n} 1] \cdot 
+[x_{1} ... x_{n} \tab 1] \cdot 
 \begin{bmatrix}
 w_{1} \newline
 \vdots \newline
@@ -57,9 +57,9 @@ What features should you use? You can start with word count features, as in the 
 ```math
 x = 
 \begin{bmatrix}
-x_{1}^{(1)} \cdots x_{n}^{(1)}  1 \newline
-\vdots \ddots \vdots \vdots \newline 
-x_{1}^{(m)} \cdots x_{n}^{(m)}  1 \newline
+x_{1}^{(1)} \cdots x_{n}^{(1)} \tab 1 \newline
+\vdots \ddots \vdots \tab \vdots \newline 
+x_{1}^{(m)} \cdots x_{n}^{(m)} \tab 1 \newline
 \end{bmatrix} 
 y = 
 \begin{bmatrix}
