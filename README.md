@@ -31,7 +31,7 @@ In addition, this function should set the number of features in ``` self.n_featu
 
 It may be helpful to store the classes in terms of their indices, rather than their names. ``` self.class_dict ``` can be used to translate between them. To get the feature vector for a document, the ``` featurize ``` function described below can be used. 
 
-* ``` featurize(self, document) ``` - Given a document (as a list of words), returns a feature vector. Note that letting $|F|$ be the number of features, this function returns a vector of length $|F| + 1$. Furthermore, the last element of the vector should always be 1. If we consider our parameter vector ``` self.theta ``` to have form $\begin{bmatrix} w_{1} & \cdots & w_{n} & b \end{bmatix}$, and our feature vector to have form $\begin{bmatrix} x_{1} & \cdots & x_{n} * 1 \end{bmatix}$, then we can see that: 
+* ``` featurize(self, document) ``` - Given a document (as a list of words), returns a feature vector. Note that letting $|F|$ be the number of features, this function returns a vector of length $|F| + 1$. Furthermore, the last element of the vector should always be 1. If we consider our parameter vector ``` self.theta ``` to have form ```math \begin{bmatrix} w_{1} & \cdots & w_{n} & b \end{bmatix} ```, and our feature vector to have form ```math \begin{bmatrix} x_{1} & \cdots & x_{n} * 1 \end{bmatix}```, then we can see that: 
 
 ```math
 \begin{bmatrix}
@@ -85,7 +85,7 @@ As a general note, we were to avoid unnecessary for loops by taking advantage of
     * ``` results[filename]['correct'] ``` = correct class 
     * ``` results[filename]['predicted'] ``` = predicted class 
 
-We were free to store the classes in terms of their indices, rather than their names. We were also free to process the development/testing documents one at a time, rather than in mini-batches. Recall that $P(y = 1x) = \hat{y}$, and we are using 0.5 as the decision boundary. 
+We were free to store the classes in terms of their indices, rather than their names. We were also free to process the development/testing documents one at a time, rather than in mini-batches. Recall that $P(y = 1|x) = \hat{y}$, and we are using 0.5 as the decision boundary. 
 
 * ``` evaluate(self, results) ``` - Given the result of ``` test ```, computes precision, recall, and F1 score for each class, as well as the overall accuracy, and prints them in a readable format. 
 
